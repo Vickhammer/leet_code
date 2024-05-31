@@ -27,11 +27,10 @@
 # Output: [0,1]
 
 def two_sum(nums, target)
-    (0..nums.length-2).each do |i|
-        (i+1..nums.length-1).each do |j|
-            if nums[i] + nums[j] == target
-                return [i,j]
-            end
+    (0..nums.length-1).each do |i|
+        missing_num = target - nums[i]
+        if nums.include?(missing_num) && nums.index(missing_num) != i
+            return [i,nums.index(missing_num)]
         end
     end
 end
